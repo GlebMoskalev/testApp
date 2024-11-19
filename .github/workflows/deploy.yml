@@ -61,4 +61,4 @@ jobs:
           if [ "$(docker ps -a -q -f name=app)" ]; then
             docker rm app
           fi
-          docker run -d -p 8888:80 --name testapp-container app
+          docker run -d -p 8888:80 --name app app
