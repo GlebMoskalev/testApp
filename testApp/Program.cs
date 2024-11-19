@@ -27,29 +27,35 @@ using (var scope = app.Services.CreateScope())
             new WeatherForecast
             {
                 Date = DateTime.UtcNow.AddDays(-1),
-                TemperatureC = 15,
+                TemperatureC = 15.5m, // Изменен тип данных на decimal
                 Summary = "Cloudy",
                 Location = "New York",
                 Humidity = 80,
-                WindSpeed = 10
+                WindSpeed = 10,
+                Pressure = 1013,
+                Visibility = 10
             },
             new WeatherForecast
             {
                 Date = DateTime.UtcNow,
-                TemperatureC = 20,
+                TemperatureC = 20.0m, // Изменен тип данных на decimal
                 Summary = "Sunny",
                 Location = "Los Angeles",
                 Humidity = 50,
-                WindSpeed = 5
+                WindSpeed = 5,
+                Pressure = 1015,
+                Visibility = 15
             },
             new WeatherForecast
             {
                 Date = DateTime.UtcNow.AddDays(1),
-                TemperatureC = 10,
+                TemperatureC = 10.2m, // Изменен тип данных на decimal
                 Summary = "Rainy",
                 Location = "Seattle",
                 Humidity = 90,
-                WindSpeed = 15
+                WindSpeed = 15,
+                Pressure = 1010,
+                Visibility = 5
             }
         });
 

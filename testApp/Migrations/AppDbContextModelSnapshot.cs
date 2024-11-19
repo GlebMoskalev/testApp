@@ -39,11 +39,17 @@ namespace testApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Pressure")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("TemperatureC")
+                    b.Property<decimal>("TemperatureC")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("Visibility")
                         .HasColumnType("integer");
 
                     b.Property<int>("WindSpeed")

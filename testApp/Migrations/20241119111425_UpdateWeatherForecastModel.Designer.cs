@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace testApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241119105337_AddWeatherForecastFields")]
-    partial class AddWeatherForecastFields
+    [Migration("20241119111425_UpdateWeatherForecastModel")]
+    partial class UpdateWeatherForecastModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,11 +41,17 @@ namespace testApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Pressure")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("TemperatureC")
+                    b.Property<decimal>("TemperatureC")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("Visibility")
                         .HasColumnType("integer");
 
                     b.Property<int>("WindSpeed")
