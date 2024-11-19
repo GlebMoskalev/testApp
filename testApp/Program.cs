@@ -1,4 +1,3 @@
-using testApp.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +18,43 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     dbContext.Database.Migrate();
+
+    // Добавляем начальные данные
+    if (!dbContext.WeatherForecasts.Any())
+    {
+        dbContext.WeatherForecasts.AddRange(new List<WeatherForecast>
+        {
+            new WeatherForecast
+            {
+                Date = DateTime.UtcNow.AddDays(-1),
+                TemperatureC = 15,
+                Summary = "Cloudy",
+                Location = "New York",
+                Humidity = 80,
+                WindSpeed = 10
+            },
+            new WeatherForecast
+            {
+                Date = DateTime.UtcNow,
+                TemperatureC = 20,
+                Summary = "Sunny",
+                Location = "Los Angeles",
+                Humidity = 50,
+                WindSpeed = 5
+            },
+            new WeatherForecast
+            {
+                Date = DateTime.UtcNow.AddDays(1),
+                TemperatureC = 10,
+                Summary = "Rainy",
+                Location = "Seattle",
+                Humidity = 90,
+                WindSpeed = 15
+            }
+        });
+
+        dbContext.SaveChanges();
+    }
 }
 
 // Configure the HTTP request pipeline.

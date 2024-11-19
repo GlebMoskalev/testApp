@@ -5,15 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using testApp.Data;
 
 #nullable disable
 
 namespace testApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241118140014_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241119105337_AddWeatherForecastFields")]
+    partial class AddWeatherForecastFields
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,11 +34,21 @@ namespace testApp.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("Humidity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("TemperatureC")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("WindSpeed")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

@@ -1,11 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace testApp.Data
+public class AppDbContext : DbContext
 {
-    public class AppDbContext : DbContext
-    {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<WeatherForecast> WeatherForecasts { get; set; }
-    }
+    public DbSet<WeatherForecast> WeatherForecasts { get; set; }
 }

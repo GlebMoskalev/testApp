@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace testApp.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class AddWeatherForecastFields : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,10 @@ namespace testApp.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     TemperatureC = table.Column<int>(type: "integer", nullable: false),
-                    Summary = table.Column<string>(type: "text", nullable: false)
+                    Summary = table.Column<string>(type: "text", nullable: false),
+                    Location = table.Column<string>(type: "text", nullable: false),
+                    Humidity = table.Column<int>(type: "integer", nullable: false),
+                    WindSpeed = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
